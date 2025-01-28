@@ -1,0 +1,27 @@
+version: '3.8'
+volumes:
+  dynamodb_data:
+
+services:
+  dynamodb:
+    command: -jar DynamoDBLocal.jar -sharedDb -dbPath /home/dynamodblocal/data/
+    image: "amazon/dynamodb-local:2.0.0"
+    container_name: dynamodb-local
+    hostname: dynamodb-local
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:8000/shell"]
+      interval: 5s
+      timeout: 3s
+      retries: 5
+    user: root
+    ports:
+      - "8000:8000"
+    volumes:
+      - "dynamodb_data:/home/dynamodblocal/data"
+  dynamodb-admin:
+    image: "aaronshaf/dynamodb-admin:4.6.1"
+    container_name: dynamodb-admin
+    ports:
+      - "8082:8001"
+    environment:
+      - DYNAMO_ENDPOINT=http://dynamodb-local:8000
