@@ -1,0 +1,12 @@
+version: '3.8'
+
+services:
+  filebeat:
+    image: docker.elastic.co/beats/filebeat:8.13.2
+    container_name: filebeat
+    user: root
+    volumes:
+      - /var/lib/docker/containers:/var/lib/docker/containers:ro
+      - /Users/mrityunjoydey/Documents/github/personal/sample-go/logs:/logs/sample-go-app:ro
+      - ./filebeat.yml:/usr/share/filebeat/filebeat.yml:ro
+    command: ["--strict.perms=false"]

@@ -1,16 +1,14 @@
-.PHONY: all postgres kafka redis monitoring
+.ONESHELL:
 
 all:
-		docker-compose up -d
-
+	docker-compose up -d
 postgres:
-		cd postgres && docker-compose up -d
-
+	cd postgres && docker-compose up -d
 kafka:
-		cd kafka && docker-compose up -d
-
+	cd kafka && docker-compose up -d
 redis:
-		cd redis && docker-compose up -d
-
+	cd redis && docker-compose up -d
 monitoring:
-		cd monitoring && docker-compose up -d
+	cd monitoring && docker-compose up -d
+filebeat:
+	cd filebeat && docker-compose up -d
