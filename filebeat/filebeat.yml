@@ -18,6 +18,11 @@ output.elasticsearch:
   hosts: ["http://host.docker.internal:9200"]
   username: "elastic"
   password: "tbqo4lbe"
+  index: "logs-local"
+
+setup.template:
+  name: "logs-local"
+  pattern: "logs-local-*"
 
 setup.kibana:
   host: "http://host.docker.internal:5601"
