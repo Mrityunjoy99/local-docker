@@ -6,7 +6,6 @@ services:
     container_name: filebeat
     user: root
     volumes:
-      - /var/lib/docker/containers:/var/lib/docker/containers:ro
       - /Users/mrityunjoydey/Documents/github/personal/sample-go/logs:/logs/sample-go-app:ro
       - ./filebeat.yml:/usr/share/filebeat/filebeat.yml:ro
     command: ["--strict.perms=false"]
