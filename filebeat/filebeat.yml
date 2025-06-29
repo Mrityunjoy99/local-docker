@@ -1,12 +1,11 @@
 filebeat.inputs:
-# Monitor local Go application logs
 - type: log
   enabled: true
   paths:
-    - /logs/sample-go-app/*.log
+    - /logs/go-grpc/*.log
   json.message_key: message
   fields:
-    app: sample-go-app
+    app: go-grpc
     environment: development
   fields_under_root: true
 
